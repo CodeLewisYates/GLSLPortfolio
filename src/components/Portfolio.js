@@ -52,8 +52,11 @@ const Portfolio = () => {
   };
 
   useEffect(() => {
-    new BaryShapeCollisions();
-    new BaryShapeCollisions();
+    if (window.innerWidth > 600) {
+      new BaryShapeCollisions();
+      new BaryShapeCollisions();
+    }
+
     return () => {
       document.getElementById("barycollisionscontainer")?.removeChild();
     };
