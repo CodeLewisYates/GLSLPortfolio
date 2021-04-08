@@ -10,6 +10,10 @@ import NoiseMorph from "./THREE/NoiseMorph";
 const Home = ({ location }) => {
   useEffect(() => {
     new NoiseMorph();
+
+    return () => {
+      //document.getElementById("noisemorphcontainer").removeChild();
+    };
   }, []);
 
   let renderedPage;

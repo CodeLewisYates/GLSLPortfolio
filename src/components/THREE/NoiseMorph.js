@@ -44,10 +44,16 @@ class NoiseMorph {
     this.controls.rotateSpeed = 1.5;
     this.controls.autoRotate = true;
     this.controls.autoRotateSpeed = 0.5;
+
+    if (navigator.userAgent.indexOf("Firefox") !== -1) {
+      this.firefox = true;
+    }
   }
 
   addObjects() {
-    this.geometry = new THREE.SphereBufferGeometry(1, 400, 400);
+    this.firefox
+      ? (this.geometry = new THREE.SphereBufferGeometry(1, 90, 90))
+      : (this.geometry = new THREE.SphereBufferGeometry(1, 300, 300));
     this.uniforms = {
       u_time: { value: 0.0 },
       u_mouse: { value: { x: 0.0, y: 0.0 } },
@@ -65,7 +71,8 @@ class NoiseMorph {
     this.scene.add(this.icos);
 
     // points geometry and material
-    let N = 10000;
+    let N;
+    this.firefox ? (N = 4000) : (N = 10000);
     const positions = new Float32Array(N * 3);
     this.pgeometry = new THREE.BufferGeometry();
 
@@ -121,7 +128,11 @@ class NoiseMorph {
   }
 
   animate() {
-    requestAnimationFrame(this.animate.bind(this));
+    this.firefox
+      ? setTimeout(() => {
+          requestAnimationFrame(this.animate.bind(this));
+        }, 1000 / 40)
+      : requestAnimationFrame(this.animate.bind(this));
     this.renderer.render(this.scene, this.camera);
     let elapsedTime = this.clock.getElapsedTime();
     this.uniforms.u_time.value = elapsedTime + 50;

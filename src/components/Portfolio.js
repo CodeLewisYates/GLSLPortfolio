@@ -54,6 +54,9 @@ const Portfolio = () => {
   useEffect(() => {
     new BaryShapeCollisions();
     new BaryShapeCollisions();
+    return () => {
+      document.getElementById("barycollisionscontainer")?.removeChild();
+    };
   }, []);
 
   const classes = useStyles();

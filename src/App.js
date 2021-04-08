@@ -10,11 +10,13 @@ function App() {
     <>
       <CssBaseline />
 
+      <div id="test"></div>
+
       <Switch>
-        <Route path="/about" exact component={Home} />
+        {/* <Route path="/about" exact component={Home} />
+        <Route path="/contact" exact component={Home} /> */}
         <Route path="/portfolio" exact component={Portfolio} />
-        <Route path="/contact" exact component={Home} />
-        <Route path="/" exact component={Home} />
+        <Route path="/" component={Home} />
       </Switch>
     </>
   );
