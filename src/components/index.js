@@ -20,10 +20,8 @@ const Home = ({ location }) => {
   return (
     <div>
       <Navbar />
-      <audio autoPlay={true}>
-        <source src="HansZimmerTime.mp3" type="audio/mp3" />
-      </audio>
       {renderedPage}
+
       <div id="noisemorphcontainer"></div>
     </div>
   );
