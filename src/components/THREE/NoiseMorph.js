@@ -52,7 +52,7 @@ class NoiseMorph {
 
   addObjects() {
     this.firefox
-      ? (this.geometry = new THREE.SphereBufferGeometry(1, 90, 90))
+      ? (this.geometry = new THREE.SphereBufferGeometry(1, 120, 120))
       : (this.geometry = new THREE.SphereBufferGeometry(1, 300, 300));
     this.uniforms = {
       u_time: { value: 0.0 },
